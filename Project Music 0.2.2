@@ -1,0 +1,137 @@
+# Importation des modules de Pygame
+
+import pygame
+from pygame.locals import *
+
+# Initialisation des modules de Pygame
+
+pygame.init()
+
+# Création de la fenêtre
+
+pygame.display.set_caption("Project Music")
+fenetre = pygame.display.set_mode((1300,675))
+
+# Initialisation des images composant le clavier
+
+clavier_init = pygame.image.load("clavier_init.jpg").convert()
+clavier_do = pygame.image.load("clavier_do.jpg").convert()
+clavier_do2 = pygame.image.load("clavier_do#.jpg").convert()
+clavier_re = pygame.image.load("clavier_re.jpg").convert()
+clavier_re2 = pygame.image.load("clavier_re#.jpg").convert()
+clavier_mi = pygame.image.load("clavier_mi.jpg").convert()
+clavier_fa = pygame.image.load("clavier_fa.jpg").convert()
+clavier_fa2 = pygame.image.load("clavier_fa#.jpg").convert()
+clavier_sol = pygame.image.load("clavier_sol.jpg").convert()
+clavier_sol2 = pygame.image.load("clavier_sol#.jpg").convert()
+clavier_la = pygame.image.load("clavier_la.jpg").convert()
+clavier_la2 = pygame.image.load("clavier_la#.jpg").convert()
+clavier_si = pygame.image.load("clavier_si.jpg").convert()
+clavier_do_2 = pygame.image.load("clavier_do2.jpg").convert()
+
+# Mise en place du clavier sur l'écran (forme initiale)
+
+fenetre.blit(clavier_init, (400,200))
+pygame.display.flip()
+
+# Initialisation des notes de musique
+
+do = pygame.mixer.Sound("1-do(c1).wav")
+do_ = pygame.mixer.Sound("2-do#(c1s).wav")
+re = pygame.mixer.Sound("3-re(d1).wav")
+re_ = pygame.mixer.Sound("4-re#(d1s).wav")
+mi = pygame.mixer.Sound("5-mi(e1).wav")
+fa = pygame.mixer.Sound("6-fa(f1).wav")
+fa_ = pygame.mixer.Sound("7-fa#(f1s).wav")
+sol = pygame.mixer.Sound("8-sol(g1).wav")
+sol_ = pygame.mixer.Sound("9-sol#(g1s).wav")
+la = pygame.mixer.Sound("10-la(a1).wav")
+la_ = pygame.mixer.Sound("11-la#(a1s).wav")
+si = pygame.mixer.Sound("12-si(b1).wav")
+do2 = pygame.mixer.Sound("13-do2(c2).wav")
+
+# Initalisation de la valeur permetant de lancer la boucle infinie
+
+infinite = 1
+
+# Boucle infinie
+
+while infinite:
+
+    # Chargement des évènements de Pygame
+    
+    for event in pygame.event.get():
+
+        # Instructions permettant au programme de se fermer
+        # correctement si l'on appuie sur la croix
+        
+        if event.type == QUIT:
+            infinite = 0
+
+        # Si l'on appuie sur une touche,
+        # joue la note et met en place l'image du clavier adéquate
+            
+        if event.type == KEYDOWN:
+            if event.key == K_e:
+                do.play()
+                fenetre.blit(clavier_do, (400,200))
+                pygame.display.flip()
+            if event.key == K_4:
+                do_.play()
+                fenetre.blit(clavier_do2, (400,200))
+                pygame.display.flip()
+            if event.key == K_r:
+                re.play()
+                fenetre.blit(clavier_re, (400,200))
+                pygame.display.flip()
+            if event.key == K_5:
+                re_.play()
+                fenetre.blit(clavier_re2, (400,200))
+                pygame.display.flip()
+            if event.key == K_t:
+                mi.play()
+                fenetre.blit(clavier_mi, (400,200))
+                pygame.display.flip()
+            if event.key == K_y:
+                fa.play()
+                fenetre.blit(clavier_fa, (400,200))
+                pygame.display.flip()
+            if event.key == K_7:
+                fa_.play()
+                fenetre.blit(clavier_fa2, (400,200))
+                pygame.display.flip()
+            if event.key == K_u:
+                sol.play()
+                fenetre.blit(clavier_sol, (400,200))
+                pygame.display.flip()
+            if event.key == K_8:
+                sol_.play()
+                fenetre.blit(clavier_sol2, (400,200))
+                pygame.display.flip()
+            if event.key == K_i:
+                la.play()
+                fenetre.blit(clavier_la, (400,200))
+                pygame.display.flip()
+            if event.key == K_9:
+                la_.play()
+                fenetre.blit(clavier_la2, (400,200))
+                pygame.display.flip()
+            if event.key == K_o:
+                si.play()
+                fenetre.blit(clavier_si, (400,200))
+                pygame.display.flip()
+            if event.key == K_p:
+                do2.play()
+                fenetre.blit(clavier_do_2, (400,200))
+                pygame.display.flip()
+
+        # Lorsque l'on n'appuie sur aucune touche, remet l'image
+        # du clavier à son état initial
+                
+        if event.type != KEYDOWN:
+            fenetre.blit(clavier_init, (400,200))
+            pygame.display.flip()
+
+# Instruction permettant au programme de se fermer correctement
+            
+pygame.quit()
