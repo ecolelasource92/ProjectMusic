@@ -27,7 +27,6 @@ interface_instrument_p = pygame.image.load("interface/Interface_instrument_1.png
 interface_instrument_o = pygame.image.load("interface/Interface_instrument_2.png").convert_alpha()
 interface_instrument_c = pygame.image.load("interface/Interface_instrument_3.png").convert_alpha()
 fond = pygame.image.load("interface/Fond.png").convert_alpha()
-partitions = pygame.image.load("interface/emplacements.png")
 
 # Initialisation des images composant le clavier
 
